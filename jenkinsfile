@@ -12,7 +12,7 @@ pipeline {
             steps {
                 script {
                     if (params.Action == "apply"){
-                        git branch: 'master',credentialsId: 'mygitkey3', url: 'git@github.com:imhl/mod-nginx-jenkins-ansible-terraform.git'
+                        git branch: 'main',credentialsId: 'mygitkey1', url: 'git@github.com:paulhjwu/mod-nginx-jenkins-ansible-terraform.git'
                     }
                 }
             }
