@@ -1,0 +1,36 @@
+version: "3.8"
+
+services:
+
+  frontend:
+    container_name: ict381web
+    image: ict381
+    build: .
+    networks:
+      - ict381network
+    ports:
+      - "5000:5000"
+
+  db:
+    container_name: ict381db
+    image: ict381mongo
+    build:
+      context: .
+      dockerfile: DockerfileMongo
+    networks:
+      - ict381network
+    ports:
+      - "27017:27017"
+
+  nginx:
+    container_name: nginx
+    build: ../nginx
+    networks:
+      - ict381network
+    ports:
+      - "80:80"
+    depends_on:
+      - frontend
+
+networks:
+  ict381network:
