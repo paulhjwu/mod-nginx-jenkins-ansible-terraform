@@ -16,3 +16,13 @@ variable "group" {
   description = "name of the ansible dynamic inventory group."
 
 }
+
+variable "SSHLocation" {
+  default = "0.0.0.0/0"
+  type    = string
+  validation {
+    condition     = can(cidrnetmask(var.SSHLocation))
+    error_message = "Must be a valid IPv4 CIDR block address."
+  }
+}
+
